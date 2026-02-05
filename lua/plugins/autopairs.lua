@@ -3,9 +3,12 @@ return {
 
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
-		-- use opts = {} for passing setup options
-		-- this is equivalent to setup({}) function
+		config = function()
+			local npairs = require("nvim-autopairs")
+			npairs.setup({
+				check_ts = true,
+			})
+		end,
 	},
 	{
 		"kylechui/nvim-surround",
@@ -14,6 +17,14 @@ return {
 		config = function()
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				filetypes = { "html", "javascript", "jsx", "typescript", "tsx", "xml" },
 			})
 		end,
 	},
