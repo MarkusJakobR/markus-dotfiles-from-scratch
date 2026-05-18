@@ -66,3 +66,12 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client and client.server_capabilities.semanticTokensProvider then
+			vim.lsp.semantic_tokens.start(args.buf, client.id)
+		end
+	end,
+})

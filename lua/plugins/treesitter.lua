@@ -7,7 +7,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects", -- optional but useful
 		},
 		config = function()
-			require("nvim-treesitter").setup({
+			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"c",
 					"cpp",
@@ -25,6 +25,7 @@ return {
 					"yaml",
 					"toml",
 				}, -- languages to install
+				highlight = { enable = true },
 			})
 		end,
 	},
